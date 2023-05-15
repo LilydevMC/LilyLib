@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "lilylib",
+  "id": "testmod",
   "version": "${version}",
 
-  "name": "LilyLib",
-  "description": "Simple configuration library for Fabric.",
+  "name": "Test Mod",
+  "description": "Test Mod",
   "authors": [
     "Jade Nash (jadelily18)"
   ],
@@ -14,11 +14,13 @@
   },
 
   "license": "MIT",
-  "icon": "assets/lilylib/icon.png",
+  "icon": "assets/testmod/icon.png",
 
   "environment": "*",
   "entrypoints": {
-
+    "client": [
+      "com.lilydev.testmod.TestModClient"
+    ]
   },
 
   "depends": {
