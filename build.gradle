@@ -27,6 +27,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	include "com.moandjiezana.toml:toml4j:0.7.2"
+
+	afterEvaluate {
+		testmodImplementation sourceSets.main.output
+	}
 }
 
 base {
