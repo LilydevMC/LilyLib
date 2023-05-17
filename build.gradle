@@ -90,6 +90,22 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+
+		maven {
+			name "lilydevMaven"
+
+			if (project.is_snapshot) {
+				url "https://maven.lilydev.com/snapshots"
+			} else {
+				url "https://maven.lilydev.com/releases"
+			}
+
+			credentials {
+				username System.getenv("REPO_USER")
+				password System.getenv("REPO_TOKEN")
+			}
+		}
+
 		mavenLocal()
 	}
 }
