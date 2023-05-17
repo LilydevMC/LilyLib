@@ -17,13 +17,23 @@
   "icon": "assets/lilylib/icon.png",
 
   "environment": "*",
-  "entrypoints": {
-
-  },
-
+  "entrypoints": {},
   "depends": {
     "fabricloader": "*",
     "minecraft": "*",
     "java": ">=17"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "lilydev.source": "https://github.com/Lilydev-by-jade/LilyLib",
+        "lilydev.issues": "https://github.com/Lilydev-by-jade/LilyLib/issues",
+        "lilydev.modrinth": "https://modrinth.com/user/jade",
+        "modmenu.discord": "https://discord.gg/TZAt4PA5av",
+        "lilydev.ko-fi": "https://ko-fi.com/jadelily"
+      },
+      "badges": [ "library" ],
+      "update_checker": false
+    }
   }
 }
