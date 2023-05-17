@@ -8,15 +8,14 @@ import org.slf4j.LoggerFactory;
 public class TestModClient implements ClientModInitializer {
 
     public Logger LOGGER = LoggerFactory.getLogger("Test Mod");
+
     @Override
     public void onInitializeClient() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
-
         LOGGER.info("Hello Fabric world! This is Test Mod!!!");
 
         TestModConfig config = new TestModConfig("Test Mod", "config", "test_mod");
         config.init();
+
+        LOGGER.info("Test string: " + config.tomlData.getString("General.test_string"));
     }
 }

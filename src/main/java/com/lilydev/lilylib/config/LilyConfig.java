@@ -13,12 +13,8 @@ import java.util.Map;
 
 public class LilyConfig {
 
-    String defaultTomlString = generateToml();
-
-    protected String fileContents = defaultTomlString;
-
+    public Toml tomlData;
     Path filePath;
-    FileOutputStream outputConfigFile;
 
 
     Logger CONFIG_LOGGER;
@@ -34,6 +30,22 @@ public class LilyConfig {
         findOrCreateFile();
     }
 
+    public void save(Map<String, Object> configData) {
+        try {
+            FileWriter writer = new FileWriter(new File(filePath.toUri()));
+            writer.write(mapToTomlString(configData));
+            writer.close();
+            CONFIG_LOGGER.info("Wrote to " + filePath + "!");
+            load();
+        } catch (IOException exception) {
+            CONFIG_LOGGER.error("Couldn't write to config file: " + exception);
+        }
+    }
+
+    public void load() {
+        tomlData = new Toml().read(new File(filePath.toUri()));
+    }
+
     public void findOrCreateFile() {
         File configFile = new File(filePath.toUri());
 
@@ -44,9 +56,10 @@ public class LilyConfig {
 
             if (configFile.createNewFile()) {
                 CONFIG_LOGGER.info("Creating config file!");
-                createFile(configFile, fileContents);
+                createFile(generateTomlMap());
             } else {
                 CONFIG_LOGGER.info("Config file found!");
+                load();
             }
 
         } catch (IOException exception) {
@@ -54,41 +67,25 @@ public class LilyConfig {
         }
     }
 
-    public void createFile(File file, String baseFileContents) {
-        try {
-            outputConfigFile = new FileOutputStream(file, false);
-
-            FileWriter writer = new FileWriter(file);
-            writer.write(baseFileContents);
-            writer.close();
-            CONFIG_LOGGER.info("Wrote to " + filePath + "!");
-        }
-        catch (FileNotFoundException exception) {
-            CONFIG_LOGGER.error("File not found: " + exception);
-        }
-        catch (IOException exception) {
-            CONFIG_LOGGER.error(String.valueOf(exception));
-        }
+    public void createFile(Map<String, Object> baseTomlMap) {
+        save(baseTomlMap);
     }
 
-    public String generateToml() {
-        return generateDefaultToml();
-    }
-
-    private String generateDefaultToml() {
-        Toml toml = new Toml();
-
-        Map<String, Object> configMap = toml.toMap();
+    public Map<String, Object> generateTomlMap() {
+        Map<String, Object> configMap = new HashMap<>();
         Map<String, Object> categoryMap = new HashMap<>();
 
         categoryMap.put("message", "This is the default toml file for LilyConfig! " +
-                "If you're reading this, you're either a mod dev or someone messed up.");
+                "If you're reading this, you're either a mod developer or someone messed up.");
 
         configMap.put("LilyConfig", categoryMap);
 
-        TomlWriter writer = new TomlWriter.Builder().build();
+        return configMap;
+    }
 
-        return writer.write(configMap);
+    private String mapToTomlString(Map<String, Object> map) {
+        TomlWriter tomlWriter = new TomlWriter.Builder().build();
+        return tomlWriter.write(map);
     }
 
 }
