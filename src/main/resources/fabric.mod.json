@@ -9,8 +9,9 @@
     "Jade Nash (jadelily18)"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://jadelily.dev",
+    "sources": "https://github.com/Lilydev-by-jade/LilyLib",
+    "issues": "https://github.com/Lilydev-by-jade/LilyLib/issues"
   },
 
   "license": "MIT",
@@ -26,11 +27,9 @@
   "custom": {
     "modmenu": {
       "links": {
-        "lilydev.source": "https://github.com/Lilydev-by-jade/LilyLib",
-        "lilydev.issues": "https://github.com/Lilydev-by-jade/LilyLib/issues",
-        "lilydev.modrinth": "https://modrinth.com/user/jade",
+        "Modrinth": "https://modrinth.com/user/jade",
         "modmenu.discord": "https://discord.gg/TZAt4PA5av",
-        "lilydev.ko-fi": "https://ko-fi.com/jadelily"
+        "Donate": "https://ko-fi.com/jadelily"
       },
       "badges": [ "library" ],
       "update_checker": false
