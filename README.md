@@ -8,5 +8,5 @@
 LilyLib is currently just a simple configuration library for
 Fabric/Quilt mods, but may have more features in the future!
 
-### License
+## License
 LilyLib is licensed under the [MIT License](LICENSE).
