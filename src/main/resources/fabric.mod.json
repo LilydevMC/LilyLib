@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "LilyLib",
-  "description": "Simple configuration library for Fabric.",
+  "description": "A simple configuration library for Fabric.",
   "authors": [
     "jadelily18"
   ],
