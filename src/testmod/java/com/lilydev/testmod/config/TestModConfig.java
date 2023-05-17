@@ -7,4 +7,5 @@ public class TestModConfig extends LilyConfig {
     public TestModConfig(String modName, String path, String fileName) {
         super(modName, path, fileName);
     }
+
 }

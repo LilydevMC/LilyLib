@@ -17,6 +17,6 @@ public class TestModClient implements ClientModInitializer {
         LOGGER.info("Hello Fabric world! This is Test Mod!!!");
 
         TestModConfig config = new TestModConfig("Test Mod", "config", "test_mod");
-        config.getOrCreateFile();
+        config.init();
     }
 }

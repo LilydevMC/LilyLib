@@ -6,7 +6,7 @@
   "name": "LilyLib",
   "description": "Simple configuration library for Fabric.",
   "authors": [
-    "Jade Nash (jadelily18)"
+    "jadelily18"
   ],
   "contact": {
     "homepage": "https://jadelily.dev",
@@ -19,11 +19,13 @@
 
   "environment": "*",
   "entrypoints": {},
+
   "depends": {
     "fabricloader": "*",
     "minecraft": "*",
     "java": ">=17"
   },
+
   "custom": {
     "modmenu": {
       "links": {
