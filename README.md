@@ -11,6 +11,27 @@ Lucko's [Fabric Permissions API](https://github.com/lucko/fabric-permissions-api
 and Patbox's [Text Placeholder API](https://github.com/Patbox/TextPlaceholderAPI)
 for use in my mods.
 
+## Usage
+
+Add the following to your `build.gradle` or `build.gradle.kts` file:
+```groovy
+    repositories {
+        // ...
+        maven {
+            url "https://maven.lilydev.com/[REPOSITORY]"
+        }
+    }
+
+    dependencies {
+        // ...
+        modImplementation "com.lilydev:LilyLib:[VERSION]"
+    }
+```
+Replace `[REPOSITORY]` with `snapshots` or `releases` depending on the version
+you're targeting, and replace `[VERSION]` with the version (e.g `0.1.0-beta.1`).
+You can find every version on my [Maven repository](https://maven.lilydev.com).
+
+
 
 ## License
 
