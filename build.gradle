@@ -36,13 +36,13 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// For TOML
-	implementation include("com.moandjiezana.toml:toml4j:0.7.2")
+	include(implementation("com.moandjiezana.toml:toml4j:0.7.2"))
 
 	// For Fabric Permissions API (https://github.com/lucko/fabric-permissions-api)
-	modImplementation include("me.lucko:fabric-permissions-api:${project.fabric_permissions_api_version}")
+	include(modImplementation("me.lucko:fabric-permissions-api:${project.fabric_permissions_api_version}"))
 
 	// For Placeholder API (https://github.com/Patbox/TextPlaceholderAPI)
-	modImplementation include("eu.pb4:placeholder-api:${project.placeholder_api_version}")
+	include(modImplementation("eu.pb4:placeholder-api:${project.placeholder_api_version}"))
 
 	afterEvaluate {
 		testmodImplementation sourceSets.main.output
