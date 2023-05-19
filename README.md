@@ -16,17 +16,17 @@ for use in my mods.
 Add the following to your `build.gradle` or `build.gradle.kts` file:
 
 ```groovy
-	repositories {
-		// ...
-		maven {
-			url "https://maven.lilydev.com/[REPOSITORY]"
-		}
-	}
+repositories {
+    // ...
+    maven {
+        url "https://maven.lilydev.com/[REPOSITORY]"
+    }
+}
 
-	dependencies {
-		// ...
-		modImplementation "com.lilydev:LilyLib:[VERSION]"
-	}
+dependencies {
+    // ...
+    modImplementation "com.lilydev:LilyLib:[VERSION]"
+}
 ```
 Replace `[REPOSITORY]` with `snapshots` or `releases` depending on the version
 you're targeting, and replace `[VERSION]` with the version (e.g `0.1.0-beta.1`).
