@@ -1,11 +1,10 @@
 package com.lilydev.testmod;
 
 import com.lilydev.lilylib.util.LilyParsing;
+import com.lilydev.testmod.config.TestModConfig;
 import net.fabricmc.api.ClientModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.lilydev.testmod.config.TestModConfig;
 
 public class TestModClient implements ClientModInitializer {
 
@@ -20,12 +19,12 @@ public class TestModClient implements ClientModInitializer {
 
         LOGGER.info("Test string: " + config.tomlData.getString("General.test_string"));
 
-        String parsedTestLine = LilyParsing.parseStringWithVariable(
+        String testParsedString = LilyParsing.parseStringWithVariable(
                 config.tomlData.getString("General.test_string"),
                 "a_placeholder",
-                "BAAAAAAAAAAAAAAAAAA"
+                "BAAAAAAAAAAAAAAAAAAAAA"
         );
 
-        LOGGER.info("Test string: " + parsedTestLine);
+        LOGGER.info("Test string: " + testParsedString);
     }
 }

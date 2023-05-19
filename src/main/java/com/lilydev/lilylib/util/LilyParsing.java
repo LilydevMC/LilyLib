@@ -2,10 +2,6 @@ package com.lilydev.lilylib.util;
 
 public class LilyParsing {
 
-    public LilyParsing() {
-
-    }
-
     /**
      * Returns the string parameter, replacing a variable of the supplied
      * variableName with variableReplacement.

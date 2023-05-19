@@ -14,15 +14,6 @@ sourceSets {
 }
 
 repositories {
-	// For Fabric Permissions API (https://github.com/lucko/fabric-permissions-api)
-	maven {
-		url "https://oss.sonatype.org/content/repositories/snapshots"
-	}
-
-	// For Placeholder API (https://github.com/Patbox/TextPlaceholderAPI)
-	maven {
-		url "https://maven.nucleoid.xyz/"
-	}
 
 }
 
@@ -36,13 +27,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// For TOML
-	include(implementation("com.moandjiezana.toml:toml4j:0.7.2"))
-
-	// For Fabric Permissions API (https://github.com/lucko/fabric-permissions-api)
-	include(modImplementation("me.lucko:fabric-permissions-api:${project.fabric_permissions_api_version}"))
-
-	// For Placeholder API (https://github.com/Patbox/TextPlaceholderAPI)
-	include(modImplementation("eu.pb4:placeholder-api:${project.placeholder_api_version}"))
+	implementation include("com.moandjiezana.toml:toml4j:0.7.2")
 
 	afterEvaluate {
 		testmodImplementation sourceSets.main.output
