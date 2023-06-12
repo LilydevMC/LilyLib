@@ -16,13 +16,13 @@ Add the following to your `build.gradle` or `build.gradle.kts` file:
 repositories {
     // ...
     maven {
-        url "https://maven.lilydev.com/[REPOSITORY]"
+        url("https://maven.lilydev.com/[REPOSITORY]")
     }
 }
 
 dependencies {
     // ...
-    modImplementation "com.lilydev:LilyLib:[VERSION]"
+    modImplementation("com.lilydev:LilyLib:[VERSION]")
 }
 ```
 Replace `[REPOSITORY]` with `snapshots` or `releases` depending on the version
