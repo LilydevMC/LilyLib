@@ -1,13 +1,12 @@
 package com.lilydev.testmod.config;
 
-import com.lilydev.lilylib.config.LilyConfig;
+import com.lilydev.lilylib.config.TomlConfig;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestModConfig extends LilyConfig {
-
-    public TestModConfig(String modName, String path, String fileName) {
+public class TestModTomlConfig extends TomlConfig {
+    public TestModTomlConfig(String modName, String path, String fileName) {
         super(modName, path, fileName);
     }
 

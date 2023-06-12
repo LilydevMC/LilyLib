@@ -1,10 +1,11 @@
 package com.lilydev.testmod;
 
-import com.lilydev.lilylib.util.LilyParsing;
-import com.lilydev.testmod.config.TestModConfig;
+import com.lilydev.testmod.config.TestModJsonConfig;
 import net.fabricmc.api.ClientModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 public class TestModClient implements ClientModInitializer {
 
@@ -14,17 +15,17 @@ public class TestModClient implements ClientModInitializer {
     public void onInitializeClient() {
         LOGGER.info("Hello Fabric world! This is Test Mod!!!");
 
-        TestModConfig config = new TestModConfig("Test Mod", "config", "test_mod");
+        TestModJsonConfig config = new TestModJsonConfig("Test Mod", "config", "test_mod");
         config.init();
 
-        LOGGER.info("Test string: " + config.tomlData.getString("General.test_string"));
+        LOGGER.info("Test string: " + config.data);
 
-        String testParsedString = LilyParsing.parseStringWithVariable(
-                config.tomlData.getString("General.test_string"),
-                "a_placeholder",
-                "BAAAAAAAAAAAAAAAAAAAAA"
-        );
+        Map<String, Object> generalData = (Map<String, Object>) config.data.get("general");
 
-        LOGGER.info("Test string: " + testParsedString);
+        generalData.replace("test_string", "a string! a modified test string!!!");
+
+        config.save(config.data);
+
+        LOGGER.info("Test string: " + config.data);
     }
 }

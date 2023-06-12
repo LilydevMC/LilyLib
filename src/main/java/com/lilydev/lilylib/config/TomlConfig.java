@@ -11,15 +11,14 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LilyConfig {
+public class TomlConfig {
 
     public Toml tomlData;
     Path filePath;
 
-
     Logger CONFIG_LOGGER;
 
-    public LilyConfig(String modName, String path, String fileName) {
+    public TomlConfig(String modName, String path, String fileName) {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         filePath = Paths.get(currentPath.toString(), path, fileName + ".toml");
 
@@ -27,6 +26,7 @@ public class LilyConfig {
     }
 
     public void init() {
+        CONFIG_LOGGER.info("Initializing TOML config!");
         findOrCreateFile();
     }
 
@@ -75,8 +75,8 @@ public class LilyConfig {
         Map<String, Object> configMap = new HashMap<>();
         Map<String, Object> categoryMap = new HashMap<>();
 
-        categoryMap.put("message", "This is the default toml file for LilyConfig! " +
-                "If you're reading this, you're either a mod developer or someone messed up.");
+        categoryMap.put("message", "This is the default TOML file for LilyConfig! " +
+                "If you're reading this, you're either a mod developer or someone messed up...");
 
         configMap.put("LilyConfig", categoryMap);
 
