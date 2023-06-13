@@ -1,6 +1,8 @@
 package com.lilydev.lilylib.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.util.DefaultIndenter;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +19,7 @@ public class JsonConfig {
 
     public Map<String, Object> data;
 
-    ObjectMapper objectMapper;
+    public ObjectMapper objectMapper;
 
     Path filePath;
 
@@ -42,7 +44,7 @@ public class JsonConfig {
             FileWriter writer = new FileWriter(new File(filePath.toUri()));
             writer.write(mapToJsonString(configData));
             writer.close();
-            CONFIG_LOGGER.info("Wrote to " + filePath + "!");
+            CONFIG_LOGGER.info("Wrote to '" + filePath + "'!");
             load();
         } catch (IOException exception) {
             CONFIG_LOGGER.error("Couldn't write to file '" + filePath.toString() + "':" + exception);
@@ -95,8 +97,16 @@ public class JsonConfig {
     }
 
     public String mapToJsonString(Map<String, Object> map) {
+        DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+
+        DefaultIndenter indenter = new DefaultIndenter("    ", DefaultIndenter.SYS_LF);
+
+        prettyPrinter.indentArraysWith(indenter);
+        prettyPrinter.indentObjectsWith(indenter);
+
         try {
             return objectMapper
+                    .setDefaultPrettyPrinter(prettyPrinter)
                     .writerWithDefaultPrettyPrinter()
                     .writeValueAsString(map);
         } catch (JsonProcessingException exception) {
