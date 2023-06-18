@@ -1,5 +1,6 @@
 plugins {
 	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id("io.github.juuxel.loom-quiltflower") version "1.10.0"
 	id 'co.uzzu.dotenv.gradle' version '2.0.0'
 	id 'maven-publish'
 }
@@ -25,13 +26,15 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	//modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// For TOML
-	implementation include("com.moandjiezana.toml:toml4j:${project.toml4j_version}")
+	include implementation("com.moandjiezana.toml:toml4j:${project.toml4j_version}")
 
 	// For Json
-	implementation include("com.fasterxml.jackson.core:jackson-databind:${project.jackson_version}")
+	include implementation("com.fasterxml.jackson.core:jackson-core:${project.jackson_version}")
+	include implementation("com.fasterxml.jackson.core:jackson-databind:${project.jackson_version}")
+	include implementation("com.fasterxml.jackson.core:jackson-annotations:${project.jackson_version}")
 
 	afterEvaluate {
 		testmodImplementation sourceSets.main.output
@@ -47,6 +50,11 @@ loom {
 		testmodClient {
 			client()
 			configName = "Test Mod Client"
+			source(project.sourceSets.testmod)
+		}
+		testmodServer {
+			server()
+			configName = "Test Mod Server"
 			source(project.sourceSets.testmod)
 		}
 	}
@@ -74,6 +82,8 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
 }
+
+
 
 jar {
 	from("LICENSE") {
